@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      th:replace="~{ base :: layout(~{::title} , ~{::section}) }">
+<head>
+    <meta charset="UTF-8">
+    <title>insert student</title>
+</head>
+<body>
+<section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <p class="fs-4">Save Student</p>
+                        <th:block th:if="${session.msg}">
+                            <p class="text-center text-success fs-4">[[${session.msg}]]</p>
+                            <th:block th:text="${@studentService.removeSessionMessage()}"></th:block>
+                        </th:block>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="addStudent" method="post">
+                            <div class="row mb-3">
+                                <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName3" placeholder="John Doe" name="name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputPhotoUrl3" class="col-sm-2 col-form-label">PhotoUrl</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputPhotoUrl3" placeholder="https://picsum.photos/" name="photoUrl">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputPhoneNumber3" class="col-sm-2 col-form-label">Phone Number</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="inputPhoneNumber3" placeholder="0123456789" name="phoneNumber">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label" >Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="name@example.com" name="email">
+                                </div>
+                            </div>
+
+                            <div class="position-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

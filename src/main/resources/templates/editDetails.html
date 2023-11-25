@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org"
+      th:replace="~{ base :: layout(~{::title} , ~{::section}) }">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit details</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <p class="fs-4">Edit Student Details</p>
+                        <th:block th:if="${session.msg}">
+                            <p class="text-center text-success fs-4">[[${session.msg}]]</p>
+                            <th:block th:text="${@studentService.removeSessionMessage()}"></th:block>
+                        </th:block>
+                    </div>
+                    <div class="card-body">
+                        <form action="/updateStudentDtls" method="post">
+                            <input type="hidden" name="id" th:value="${stu.id}">
+                            <div class="mb-3">
+                                <label class="form-label">Name </label>
+                                <input type="text" class="form-control" name="name"
+                                                         th:value="${stu.name}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Photo Url</label>
+                                <input type="url" class="form-control" name="photoUrl"
+                                       th:value="${stu.photoUrl}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Phone Number</label>
+                                <input type="number" class="form-control" name="phoneNumber"
+                                       th:value="${stu.phoneNumber}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email"
+                                                           th:value="${stu.email}">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
